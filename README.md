@@ -13,7 +13,7 @@ This project utilizes the Helius third-party API for fetching wallet transaction
 ## Installation
 1. Clone the repository:
    ```sh
-   git clone <repository-url>
+   git clone https://github.com/sharithasneem/cryptocurrencyWallet.git
    ```
 2. Install dependencies:
    ```sh
