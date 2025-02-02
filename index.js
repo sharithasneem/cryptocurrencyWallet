@@ -70,7 +70,9 @@ async function analyzeWalletPerformance(wallet) {
         const daysActive = (lastTimestamp - firstTimestamp) / (1000 * 60 * 60 * 24);
         const tradingFrequency = daysActive > 0 ? transactionCount / daysActive : 0;
 
-        const activityLevel = { transactionCount, totalInvestment, totalReturns };
+        const activityLevelTransactionCount = transactionCount
+        const activityLevelTotalInvestment = totalInvestment
+        const activityLevelTotalReturns = totalReturns
 
         timestamps.forEach((timestamp, i) => {
             if (i > 0) {
@@ -87,7 +89,9 @@ async function analyzeWalletPerformance(wallet) {
         return {
             roi: roi.toFixed(2) + '%',
             tradingFrequency: tradingFrequency.toFixed(2) + ' trades/day',
-            activityLevel: `Transactions: ${transactionCount}, Investment: ${totalInvestment}, Returns: ${totalReturns}`,
+            activityLevelTransactionCount,
+            activityLevelTotalInvestment,
+            activityLevelTotalReturns,
             volatility: volatility.toFixed(4),
             sharpeRatio: sharpeRatio.toFixed(4),
         };
