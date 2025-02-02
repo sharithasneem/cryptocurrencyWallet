@@ -7,6 +7,8 @@ import Moralis from 'moralis';
 import { parse, write } from 'fast-csv';
 import { mean, std } from 'mathjs'; // For calculations
 
+const API_KEY = '79910782-427a-4d42-96a8-230e88f9f88f'; // Replace with your actual API key
+
 // Convert __dirname for ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,7 +16,6 @@ const __dirname = path.dirname(__filename);
 const CSV_FILE = path.join(__dirname, 'src/top_traders_account_numbers.csv');
 const OUTPUT_FILE = 'ranked_wallets.csv';
 
-const API_KEY = '79910782-427a-4d42-96a8-230e88f9f88f'; // Replace with your actual API key
 
 async function fetchWalletHistory(wallet) {
     try {
@@ -86,10 +87,11 @@ async function analyzeWalletPerformance(wallet) {
         return {
             roi: roi.toFixed(2) + '%',
             tradingFrequency: tradingFrequency.toFixed(2) + ' trades/day',
-            activityLevel,
+            activityLevel: `Transactions: ${transactionCount}, Investment: ${totalInvestment}, Returns: ${totalReturns}`,
             volatility: volatility.toFixed(4),
             sharpeRatio: sharpeRatio.toFixed(4),
         };
+
     } catch (error) {
         console.error(`Error analyzing wallet performance: ${error.message}`);
         return null;
